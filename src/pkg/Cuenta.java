@@ -17,12 +17,16 @@ public class Cuenta {
 
 	public void ingresar(Double i) {
 		saldo += i;
-		mMovimientos.add(new Movimiento(i, true, "Detalles..."));
+		mMovimientos.add(new Movimiento(saldo, i, true, "Detalles..."));
 	}
 
 	public void retirar(Double i) {
-		saldo -= i;
-		mMovimientos.add(new Movimiento(-i, false, "Detalles..."));
+		if (saldo - i < -500) {
+			mMovimientos.add(new Movimiento(saldo, -i, false, "Error, no hay suficiente saldo..."));
+		} else {
+			saldo -= i;
+			mMovimientos.add(new Movimiento(saldo, -i, true, "Detalles..."));
+		}
 	}
 
 	public String getNumero() {
@@ -42,8 +46,6 @@ public class Cuenta {
 	}
 
 	public Double getSaldo() {
-		if(saldo<-500)
-			return -500.0;
 		return saldo;
 	}
 

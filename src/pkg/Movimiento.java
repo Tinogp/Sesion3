@@ -9,12 +9,18 @@ public class Movimiento {
 	public Signo signo;
 	public String detalle;
 
-	public Movimiento(Double imp, boolean signo, String det) {
+	public Movimiento(Double saldo,Double imp, boolean signo, String det) {
 		importe = imp;
+		detalle = det;
 		if (signo) {
 			this.signo = Signo.D;
-		} else
+		} else {
 			this.signo = Signo.H;
-		detalle = det;
+			System.out.println("Error en el movimiento, saldo en la cuenta: "+saldo+"\n"
+					+ "importe a reintregar: "+imp+"\ndetalles: "+det);
+		}
+			
 	}
+	
+	
 }
