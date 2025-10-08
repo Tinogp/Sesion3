@@ -42,6 +42,8 @@ public class Cuenta {
 	}
 
 	public Double getSaldo() {
+		if(saldo<-500)
+			return -500.0;
 		return saldo;
 	}
 
